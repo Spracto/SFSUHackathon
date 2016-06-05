@@ -29,10 +29,13 @@
       {% endif %}
 			{% if results %}
 			<div class='resultContainer'>
-				<p>{% print results.address %}</p>
-        <p>{% print results.status %}</p>
+				<p>{% print results.address %}, San Francisco CA.</p>
+        <p>Building status: {% print results.status %}</p>
+        <p>Evaluation form received on: {% print results.formRec %}</p>
+        <p>Evaluation form completed on: {% print results.formComp %}</p>
 			</div>
 			{% endif %}
+      <h2>What now?</h2>
 		</div>
 	</body>
 </html>

@@ -1,16 +1,18 @@
-body * {
+body {
   background: #bdc3c7;
 }
 .submitButton {
   margin: 10px;
 }
 .container {
-  height: 21em;
+  height: 42em;
   border-radius: 10px;
+  background-color: #bdc3c7;
 }
 #map {
   height: 25em;
   width: 45em;
   margin-top: 2em;
   margin: auto;
+  border-radius: 10px;
 }
