@@ -9,7 +9,7 @@ import psycopg2.extras
 import sys
 
 try:
-    conn = psycopg2.connect("dbname='sfsuhackathon' user='postgres' host='localhost' password='#2002Civic'")
+    conn = psycopg2.connect("dbname='sfsuhackathon' user='postgres' host='localhost' password=''")
     print "heyyyy that pretty cool"
 except:
     print "I am unable to connect to the database"
