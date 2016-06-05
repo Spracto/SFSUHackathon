@@ -3,6 +3,7 @@ app = Flask(__name__)
 import psycopg2
 import psycopg2.extras
 import sys
+import dbconn
 
 app.secret_key ="civicHack"
 
@@ -12,11 +13,8 @@ def index():
 
 @app.route('/cityLookup', methods=['post'])
 def cityLookup():
-	try:
-	    conn = psycopg2.connect("dbname='sfsuhackathon' user='postgres' host='localhost' password='#2002Civic'")
-	    # print "heyyyy that pretty cool"
-	except:
-	    print "I am unable to connect to the database"
+	
+	conn = dbconn.dbConnector()
 	cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
 	try:
 		SQL = "SELECT * FROM hackathon WHERE address LIKE (%s);"
@@ -28,7 +26,7 @@ def cityLookup():
 		rows = cur.fetchall()
 		if rows == []:
 			errors = {
-				'error' : "address not in database"
+				'error' : "Address not in database"
 			}
 			return render_template('result.html', result=errors)
 		else:
@@ -51,7 +49,7 @@ def cityLookup():
 			# print "Hey this is what came back"+session['city']
 			return render_template('result.html', results=result)
 	except:
-	    print "cannot execute"
+	    print "Cannot execute"
 
 @app.route('/reset', methods=['post'])
 def reset():

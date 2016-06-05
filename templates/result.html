@@ -5,6 +5,7 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlVc7bospKP6_GfzRmOBi_BbkeakAkuzA&callback=initMap" async defer></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 		<script src="../static/earthquake.js" ></script>
 		<meta>
@@ -21,7 +22,7 @@
 				<form action='/reset' method="post">
 					<!-- <label>Enter your address, please note that city and state are appended automatically. Just enter the number and street name</label> -->
 					<!-- <input id ='address' type='text' name='city' class='form-control'/> -->
-					<input id ='submit' class='btn btn-danger pull-right submitButton' type='submit' value='reset'/>
+					<input id ='submit' class='btn btn-danger pull-right submitButton' type='submit' value='Reset'/>
 				</form>
 			</div>
       {% if result %}
@@ -29,10 +30,45 @@
       {% endif %}
 			{% if results %}
 			<div class='resultContainer'>
-				<p>{% print results.address %}, San Francisco CA.</p>
-        <p>Building status: {% print results.status %}</p>
-        <p>Evaluation form received on: {% print results.formRec %}</p>
-        <p>Evaluation form completed on: {% print results.formComp %}</p>
+				<div id = 'address'>
+					<h3> {% print results.address %}, San Francisco CA.</h3>
+				</div>
+				<div id='map'></div>
+				<script>
+			      function initMap() {
+			        var mapAddress = document.getElementById('address');
+			        console.log(mapAddress);
+			        var map = new google.maps.Map(document.getElementById('map'), {
+			          zoom: 8,
+			          center: {lat: -34.397, lng: 150.644}
+			        });
+			        
+			        var geocoder = new google.maps.Geocoder();
+
+			        document.getElementById('submit').addEventListener('click', function() {
+			          geocodeAddress(geocoder, map);
+			        });
+			      }
+
+			      function geocodeAddress(geocoder, resultsMap) {
+			        var address = document.getElementById("address");
+			        console.log(address);
+			        geocoder.geocode({'address': address}, function(results, status) {
+			          if (status === google.maps.GeocoderStatus.OK) {
+			            resultsMap.setCenter(results[0].geometry.location);
+			            var marker = new google.maps.Marker({
+			              map: resultsMap,
+			              position: results[0].geometry.location
+			            });
+			          } else {
+			            alert('Geocode was not successful for the following reason: ' + status);
+			          }
+			        });
+			      }
+			    </script>
+		        <p>Building status: {% print results.status %}</p>
+		        <p>Evaluation form received on: {% print results.formRec %}</p>
+		        <p>Evaluation form completed on: {% print results.formComp %}</p>
 			</div>
 			{% endif %}
       <h2>What now?</h2>
