@@ -33,7 +33,7 @@ def cityLookup():
 			result = {
 				'address' : rows[0]['address'],
 				'status' : rows[0]['status'],
-				'notice' : rows[0]['notice'],
+				'notice' : 'Yes' if rows[0]['notice'] == 'X' else 'No',
 				'formRec' : rows[0]['sc_rcvd'],
 				'formComp' : rows[0]['sc_comp'],
 				'lot' : rows[0]['lot'],
