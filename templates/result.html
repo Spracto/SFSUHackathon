@@ -37,7 +37,7 @@
 				<p>Building status: {% print results.status %}</p>
 				<p>Evaluation form received on: {% print results.formRec %}</p>
 				<p>Evaluation form completed on: {% print results.formComp %}</p>
-				<div id='map'></div>
+				<div id='map' title="Google Map indicating location of the property"></div>
 				<script>
 			      function initMap() {
 			        var mapAddress = document.getElementById('location').value;
