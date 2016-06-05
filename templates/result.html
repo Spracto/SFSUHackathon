@@ -41,7 +41,7 @@
 				<script>
 			      function initMap() {
 			        var mapAddress = document.getElementById('location').value;
-			        console.log(mapAddress);
+			        console.log("stuff and things", mapAddress);
 			        var map = new google.maps.Map(document.getElementById('map'), {
 			          zoom: 12,
 			          center: {lat: 37.7749, lng: -122.4194}
@@ -56,7 +56,7 @@
 
 			      function geocodeAddress(geocoder, resultsMap) {
 			        var address = document.getElementById("address");
-			        console.log(address);
+			        console.log("something distinct", address);
 			        geocoder.geocode({'address': address}, function(results, status) {
 			          if (status === google.maps.GeocoderStatus.OK) {
 			            resultsMap.setCenter(results[0].geometry.location);
