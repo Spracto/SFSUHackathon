@@ -31,7 +31,7 @@
 			{% if results %}
 			<div class='resultContainer'>
 				<div id = 'address'>
-					<h3> {% print results.address %}, San Francisco CA.</h3>
+					<h3 id = 'head'> {% print results.address %}, San Francisco CA.</h3>
 				</div>
 				<div id='map'></div>
 				<script>
@@ -39,8 +39,8 @@
 			        var mapAddress = document.getElementById('address');
 			        console.log(mapAddress);
 			        var map = new google.maps.Map(document.getElementById('map'), {
-			          zoom: 8,
-			          center: {lat: -34.397, lng: 150.644}
+			          zoom: 12,
+			          center: {lat: 37.7749, lng: -122.4194}
 			        });
 			        
 			        var geocoder = new google.maps.Geocoder();
