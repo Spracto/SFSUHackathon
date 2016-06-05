@@ -31,18 +31,22 @@
 			{% if results %}
 			<div class='resultContainer'>
 				<div id = 'address'>
+					<input id='location' type='hidden' value='{% print results.address%} San Francisco CA.' />
 					<h3> {% print results.address %}, San Francisco CA.</h3>
 				</div>
+				<p>Building status: {% print results.status %}</p>
+				<p>Evaluation form received on: {% print results.formRec %}</p>
+				<p>Evaluation form completed on: {% print results.formComp %}</p>
 				<div id='map'></div>
 				<script>
 			      function initMap() {
-			        var mapAddress = document.getElementById('address');
+			        var mapAddress = document.getElementById('location').value;
 			        console.log(mapAddress);
 			        var map = new google.maps.Map(document.getElementById('map'), {
-			          zoom: 8,
-			          center: {lat: -34.397, lng: 150.644}
+			          zoom: 12,
+			          center: {lat: 37.7749, lng: -122.4194}
 			        });
-			        
+
 			        var geocoder = new google.maps.Geocoder();
 
 			        document.getElementById('submit').addEventListener('click', function() {
@@ -66,12 +70,9 @@
 			        });
 			      }
 			    </script>
-		        <p>Building status: {% print results.status %}</p>
-		        <p>Evaluation form received on: {% print results.formRec %}</p>
-		        <p>Evaluation form completed on: {% print results.formComp %}</p>
 			</div>
 			{% endif %}
-      <h2>What now?</h2>
+      <!-- <h2>What now?</h2> -->
 		</div>
 	</body>
 </html>

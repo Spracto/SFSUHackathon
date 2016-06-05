@@ -13,26 +13,23 @@ def index():
 
 @app.route('/cityLookup', methods=['post'])
 def cityLookup():
-	
+
 	conn = dbconn.dbConnector()
 	cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
 	try:
 		SQL = "SELECT * FROM hackathon WHERE address LIKE (%s);"
-		# print request.form['city']
 		userCity = request.form['city'].upper()
 		data = (userCity + "%",)
 		print data
 		cur.execute(SQL, data)
 		rows = cur.fetchall()
-		if rows == []:
+		if rows == [] or userCity == "":
 			errors = {
 				'error' : "Address not in database"
 			}
 			return render_template('result.html', result=errors)
 		else:
 			print rows
-			# address = rows[0]['address']
-			# status = rows[0]['status']
 			result = {
 				'address' : rows[0]['address'],
 				'status' : rows[0]['status'],
