@@ -32,12 +32,20 @@
 			<div class='resultContainer'>
 				<div id = 'address'>
 					<input id='location' type='hidden' value='{% print results.address%} San Francisco, CA.' />
-					<h3> {% print results.address %}, San Francisco CA.</h3>
+					<h3> {% print results.address %}, San Francisco, CA.</h3>
 				</div>
-				<p>Building status: {% print results.status %}</p>
-				<p>Evaluation form received on: {% print results.formRec %}</p>
-				<p>Evaluation form completed on: {% print results.formComp %}</p>
-				<p>Has notice been sent to the owner? : {% print results.notice %}</p>
+				<div class='leftContent'>
+					<p>Building status: {% print results.status %}</p>
+					<p>Evaluation form received on: {% print results.formRec %}</p>
+					<p>Evaluation form completed on: {% print results.formComp %}</p>
+					<p>Has notice been sent to the owner? : {% print results.notice %}</p>
+				</div>
+				<div class='rightContent'>
+					<p>Optional evaulation received? {% print results.optEvalRec %}</p>
+					<p>Block: {% print results.block %}</p>
+					<p>Lot: {% print results.lot %}</p>
+					<p>Tier {% print results.tier %}</p>
+				</div>
 				<div id='map' title="Google Map indicating location of the property"></div>
 				<script>
 			      function initMap() {

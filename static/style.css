@@ -30,3 +30,14 @@ p {
   margin-top: 5em;
   margin-left: 8px;
 }
+.leftContent {
+  display: inline-block;
+  width: auto;
+  margin-left: 50px;
+}
+.rightContent {
+  width: auto;
+  margin-left: 200px;
+  display: inline-block;
+  vertical-align: top;
+}
