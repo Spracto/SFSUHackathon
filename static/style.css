@@ -16,7 +16,6 @@ p {
 #map {
   height: 28em;
   width: 80em;
-  /*margin: auto;*/
   border-radius: 10px;
 }
 .btn {
@@ -24,13 +23,21 @@ p {
 }
 .addressInput {
   height: auto;
-  /*border: 5px solid black;*/
-
 }
 .mapContainer {
   height: 28em;
   width: 80.5em;
   margin-top: 5em;
   margin-left: 8px;
-  /*margin: auto;*/
+}
+.leftContent {
+  display: inline-block;
+  width: auto;
+  margin-left: 50px;
+}
+.rightContent {
+  width: auto;
+  margin-left: 200px;
+  display: inline-block;
+  vertical-align: top;
 }
