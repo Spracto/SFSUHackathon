@@ -9,7 +9,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 		<script src="../static/earthquake.js" ></script>
 		<meta>
-		<title>SFSU Hackathon - Earthquake compliance results for {% print results.address %}</title>
+		<title>SFSU Hackathon - Earthquake compliance results</title>
 	</head>
 	<body>
 		<div class='container'>
@@ -26,17 +26,18 @@
 				</form>
 			</div>
       {% if result %}
-        <p>{% print result.error %}</p>
+        <h3>{% print result.error %}</h3>
       {% endif %}
 			{% if results %}
 			<div class='resultContainer'>
 				<div id = 'address'>
-					<input id='location' type='hidden' value='{% print results.address%} San Francisco CA.' />
+					<input id='location' type='hidden' value='{% print results.address%} San Francisco, CA.' />
 					<h3> {% print results.address %}, San Francisco CA.</h3>
 				</div>
 				<p>Building status: {% print results.status %}</p>
 				<p>Evaluation form received on: {% print results.formRec %}</p>
 				<p>Evaluation form completed on: {% print results.formComp %}</p>
+				<p>Has notice been sent to the owner? : {% print results.notice %}</p>
 				<div id='map' title="Google Map indicating location of the property"></div>
 				<script>
 			      function initMap() {
@@ -66,6 +67,14 @@
 			</div>
 			{% endif %}
       <!-- <h2>What now?</h2> -->
+		<br/>
+		<div class = "row">
+			<ul style="line-height: 20 px;">
+			<li>For more information, visit Window #8 at 1660 Mission Street, 1st Floor</li>
+			<li>Call 415-558-6699</li>
+			<li>Email&nbsp;<a href="mailto:softstory@sfgov.org">softstory@sfgov.org</a></li>
+			</ul>
+		</div>
 		</div>
 	</body>
 </html>
