@@ -2,6 +2,9 @@ body {
   font-size: 2em;
   background: #bdc3c7;
 }
+p {
+    font-size: 14px;
+}
 .submitButton {
   margin: 10px;
 }
